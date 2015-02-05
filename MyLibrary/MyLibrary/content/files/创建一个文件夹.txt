@@ -1,0 +1,29 @@
+/**
+ * 创建一个文件夹。
+ * @param directory 文件夹路径
+ * @return 创建成功则返回true，否则返回false。
+ * @throws IOException
+ */
+public static boolean makeDirectory(String directory)
+		throws IOException {
+	return makeDirectory(directory, false);
+}
+
+/**
+ * 创建一个文件夹
+ * @param directory   需要被创建的文件夹
+ * @param createParents  是否创建父级文件夹
+ * @return 如果文件夹创建成功，返回true。如果文件夹已经存在，返回false。
+ * @throws IOException
+ */
+public static boolean makeDirectory(String directory,
+		boolean createParents) throws IOException {
+	boolean created;
+	File dir = new File(directory);
+	if (createParents) {
+		created = dir.mkdirs();
+	} else {
+		created = dir.mkdir();
+	}
+	return created;
+}

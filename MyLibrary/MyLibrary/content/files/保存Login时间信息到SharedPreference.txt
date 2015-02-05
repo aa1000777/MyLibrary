@@ -1,0 +1,15 @@
+/**
+ ***************************************************** 
+ * @参数列表： @param context
+ * @参数列表： @param Personno
+ * @方法简介： 保存Login时间信息到SharedPreference
+ ***************************************************** 
+ */
+public static void saveTimeToSharedPreferences(Context context,
+		String Personno) {
+	SharedPreferences sharedPreferences = context.getSharedPreferences(
+			"time", context.MODE_PRIVATE);
+	SharedPreferences.Editor editor = sharedPreferences.edit();
+	editor.putString("time", Personno);
+	editor.commit();
+}

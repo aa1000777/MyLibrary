@@ -1,0 +1,18 @@
+/**
+ * 提取文件名
+ * @param path   路径
+ * @return 文件名
+ */
+public static String extractName(String path) {
+	if (path == null)
+		return null;
+	boolean hasFileName = path.substring(
+			path.length() - 5, path.length()).contains(
+			".");
+	if (hasFileName) {
+		return path.substring(path
+				.lastIndexOf(File.separator) + 1);
+	} else {
+		return null;
+	}
+}

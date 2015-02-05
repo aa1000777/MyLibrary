@@ -1,0 +1,60 @@
+/**
+ ***************************************************** 
+ * ListDataAdapter
+ ***************************************************** 
+ */
+public class ListDataAdapter extends BaseAdapter {
+	private Context context;
+	private List<Xml> data;
+	private LayoutInflater mInflater;
+
+	public ListDataAdapter(Context context, List<Xml> data) {
+		mInflater = LayoutInflater.from(context);
+		this.context = context;
+		this.data = data;
+	}
+
+	@Override
+	public int getCount() {
+		return data.size();
+	}
+
+	@Override
+	public Object getItem(int position) {
+		return data.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView,
+			ViewGroup viewgroup) {
+		ViewHolder holder = null;
+		if (convertView == null) {
+			holder = new ViewHolder();
+			// convertView =
+			// LayoutInflater.from(context).inflate(
+			// R.layout.list_data_adapter,viewgroup, false);
+			convertView = mInflater.inflate(
+					R.layout.list_data_adapter, null);
+			holder.liat_data_adpter_Title_TV = (TextView) convertView
+					.findViewById(R.id.liat_data_adpter_Title_TV);
+			convertView.setTag(holder);
+		} else {
+			holder = (ViewHolder) convertView.getTag();
+		}
+		if (data != null) {
+			holder.liat_data_adpter_Title_TV.setText(data
+					.get(position).valeu);
+		}
+		return convertView;
+
+	}
+	// 实体类
+	class ViewHolder {
+		TextView liat_data_adpter_Title_TV;
+	}
+}

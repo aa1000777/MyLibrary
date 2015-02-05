@@ -1,0 +1,9 @@
+/**
+ ***************************************************** 
+ * 方法简介: 强制设置Actiity的显示方向为垂直方向。
+ * @param activity
+ ***************************************************** 
+ */
+public static void setScreenVertical(Activity activity) {
+	activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+}

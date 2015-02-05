@@ -1,0 +1,10 @@
+/**
+ ***************************************************** 
+ * 方法简介: 使UI适配输入法
+ * @param activity
+ ***************************************************** 
+ */
+public static void adjustSoftInput(Activity activity) {
+	activity.getWindow().setSoftInputMode(
+		WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+}

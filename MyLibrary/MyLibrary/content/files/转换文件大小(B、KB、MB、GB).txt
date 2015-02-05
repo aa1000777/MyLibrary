@@ -1,0 +1,21 @@
+/**
+ ***************************************************** 
+ * @方法简介： 转换文件大小(B/KB/MB/GB)
+ * @参数列表： @param fileS
+ * @返回值： String B/KB/MB/GB
+ ***************************************************** 
+ */
+public static String formatFileSize(long fileS) {
+	java.text.DecimalFormat df = new java.text.DecimalFormat("#.00");
+	String fileSizeString = "";
+	if (fileS < 1024) {
+		fileSizeString = df.format((double) fileS)+ "B";
+	} else if (fileS < 1048576) {
+		fileSizeString = df.format((double) fileS / 1024) + "KB";
+	} else if (fileS < 1073741824) {
+		fileSizeString = df.format((double) fileS / 1048576)+ "MB";
+	} else {
+		fileSizeString = df.format((double) fileS / 1073741824)+ "G";
+	}
+	return fileSizeString;
+}

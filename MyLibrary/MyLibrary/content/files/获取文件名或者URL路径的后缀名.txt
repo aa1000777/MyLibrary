@@ -1,0 +1,13 @@
+private static final int min_leight = ".jpg".length();
+/**
+ * 获取文件名或者URL路径的后缀名。 e.g http://www.foobar.com/logo.png 后缀名为 png, foobar.jpg
+ * 后缀名为 jpg
+ * @param pathOrName  路径或者文件名
+ * @return 后缀名
+ */
+public static String getSuffix(String pathOrName) {
+	if (pathOrName == null || !pathOrName.contains(".")
+			|| min_leight > pathOrName.length())
+		return null;
+	return pathOrName.substring(pathOrName.indexOf('.'));
+}

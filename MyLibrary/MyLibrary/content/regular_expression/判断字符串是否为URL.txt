@@ -1,0 +1,14 @@
+public static final String URL_REG_EXPRESSION = "^(https?://)?([a-zA-Z0-9_-]+\\.[a-zA-Z0-9_-]+)+(/*[A-Za-z0-9/\\-_&:?\\+=//.%]*)*";
+/**
+ ***************************************************** 
+ * @方法简介： 判断字符串是否为URL
+ * @参数列表： @param s
+ * @返回值： boolean
+ ***************************************************** 
+ */
+public static boolean isUrl(String s) {
+	if (s == null) {
+		return false;
+	}
+	return Pattern.matches(URL_REG_EXPRESSION, s);
+}

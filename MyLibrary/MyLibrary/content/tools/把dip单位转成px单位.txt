@@ -1,0 +1,16 @@
+/**
+ ***************************************************** 
+ * @方法名称: formatDipToPx
+ * @创建时间: 2014-7-7 上午11:22:43
+ * @参数列表： @param context
+ * @参数列表： @param dip
+ * @返回值： int
+ * @方法简介： 把dip单位转成px单位
+ ***************************************************** 
+ */
+public static int formatDipToPx(Context context, int dip) {
+	DisplayMetrics dm = new DisplayMetrics();
+	((Activity) context).getWindowManager()
+			.getDefaultDisplay().getMetrics(dm);
+	return (int) Math.ceil(dip * dm.density);
+}

@@ -1,0 +1,25 @@
+/**
+ ***************************************************** 
+ * @方法简介： 设置字体文件(字体文件放在assets中)
+ * @参数列表： @param context
+ * @参数列表： @param type
+ * @返回值： Typeface
+ ***************************************************** 
+ */
+public static Typeface getTypeFace(Context context, String type) {
+	if ("bold".equals(type)) {
+		return Typeface.createFromAsset(context.getAssets(),
+				"huawenxinwei.TTF");
+	} else if ("normal".equals(type)) {
+		return Typeface.createFromAsset(context.getAssets(),
+				"Gotham-Rounded-Light_21020.ttf");
+	} else if ("italic".equals(type)) {
+		return Typeface.createFromAsset(context.getAssets(),
+				"Gotham-Rounded-Book_21018.ttf");
+	}
+	return Typeface.createFromAsset(context.getAssets(),
+			"HelveticaNormal.ttf");
+}
+public static Typeface getTypeFace(Context context) {
+	return getTypeFace(context, "normal");
+}

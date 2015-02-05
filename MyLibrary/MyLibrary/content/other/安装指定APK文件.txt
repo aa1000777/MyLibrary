@@ -1,0 +1,16 @@
+/**
+ * 
+ ***************************************************** 
+ * @方法简介：安装指定APK文件
+ * @参数列表： @param activity Activity
+ * @参数列表： @param apkFile APK文件对象
+ ***************************************************** 
+ */
+public static void install(Activity activity, File apkFile) {
+	Intent intent = new Intent();
+	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	intent.setAction(android.content.Intent.ACTION_VIEW);
+	intent.setDataAndType(Uri.fromFile(apkFile),
+			"application/vnd.android.package-archive");
+	activity.startActivity(intent);
+}

@@ -1,0 +1,9 @@
+/**
+ ***************************************************** 
+ * 方法简介: 隐藏Activity的系统默认标题栏
+ * @param activity
+ ***************************************************** 
+ */
+public static void hideTitleBar(Activity activity) {
+	activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
+}

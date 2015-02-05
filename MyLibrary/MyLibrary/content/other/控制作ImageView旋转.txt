@@ -1,0 +1,32 @@
+/**
+ ***************************************************** 
+ * @方法简介： 控制作ImageView旋转
+ * @参数列表： @param context
+ * @参数列表： @param refreshIV
+ ***************************************************** 
+ */
+public static void startRotate(Context context, ImageView refreshIV) {
+	Animation animation = AnimationUtils.loadAnimation(context, R.anim.tip);
+	animation.setInterpolator(new LinearInterpolator());
+	refreshIV.startAnimation(animation);
+}
+/**
+ ***************************************************** 
+ * @方法简介： 停止ImageView旋转
+ * @参数列表： @param refreshIV
+ ***************************************************** 
+ */
+public static void stopRotate(ImageView refreshIV) {
+	refreshIV.clearAnimation();
+}
+
+< ?xml version="1.0" encoding="utf-8"?>  
+<set xmlns:android="http://schemas.android.com/apk/res/android">  
+    <rotate  
+        android:fromDegrees="0"  
+        android:toDegrees="359"  
+        android:duration="500"  
+        android:repeatCount="-1"  
+        android:pivotX="50%"  
+        android:pivotY="50%" />  
+</set>

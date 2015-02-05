@@ -1,0 +1,28 @@
+第一：
+
+     重用了convertView，很大程度上的减少了内存的消耗。通过判断convertView是否为null，
+     是的话就需要产生一个视图出来，然后给这个视图数据，最后将这个视图返回给底层，呈献给用户。
+
+     特点：如果当前的convertView为null，则通过LayoutInflat产生一个view。
+     
+第二：
+
+     上面的写法会有一个缺点，就是每次在getVIew的时候，都需要重新的findViewById，
+     重新找到控件，然后进行控件的赋值以及事件相应设置。这样其实在做重复的事情，因为的geiview中，
+     其实包含有这些控件，而且这些控件的id还都是一样的，也就是其实只要在view中findViewById一次，
+     后面无需要每次都要findViewById了。
+
+  下面给出第二种写法
+
+     写发的特点，通常有一个内部类class ViewHolder,这个ViewHolder,
+     用来标识view中一些控件，方便进行一些事件相应操作的设置，比如onClick等等，
+     这样可以不用每次都要findViewById了，减少了性能的消耗。
+     同时重用了convertView，很大程度上的减少了内存的消耗。
+     
+第三：
+　 个人觉得这个写法是最舒服的，最舒服的意思是看着代码有一种很爽，看的很清晰。
+
+    特点，使用了内部类class ViewHolder、重用了convertView。
+
+    区别第二种写法是，使用了一个临时变量View view = convertView，
+    然后修改view，最后返回view

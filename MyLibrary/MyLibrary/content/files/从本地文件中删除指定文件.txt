@@ -1,0 +1,12 @@
+/**
+ ***************************************************** 
+ * @方法简介： 从本地文件中删除指定文件
+ * @参数列表： @param imagePath
+ ***************************************************** 
+ */
+public static void deleteImageFromLocal(String imagePath) {
+	File file = new File(imagePath);
+	if (file.exists()) {
+		file.delete();
+	}
+}

@@ -1,0 +1,20 @@
+/**
+  *****************************************************
+  * @方法简介：  判断3G网络是否可以使用
+  * @参数列表：  @param context
+  * @返回值：       boolean
+  *****************************************************
+ */
+public static boolean isNetworkAvailable( Context context) {	
+    ConnectivityManager connectivity = 
+    		(ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+    if (connectivity == null) {
+    	return false;
+    } else {
+        NetworkInfo info = connectivity.getActiveNetworkInfo();
+        if(info == null){
+        	return false;
+        }
+    }
+    return true;
+}

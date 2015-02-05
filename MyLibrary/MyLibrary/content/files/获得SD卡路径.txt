@@ -1,0 +1,15 @@
+/**
+ ***************************************************** 
+ * @方法简介： 获得SD卡路径
+ * @返回值： String
+ ***************************************************** 
+ */
+public static String getSDRootPath() {
+	if (Environment.getExternalStorageState().equals(
+			Environment.MEDIA_MOUNTED)) {
+		return Environment
+				.getExternalStorageDirectory() + "";
+	} else {
+		return null;
+	}
+}

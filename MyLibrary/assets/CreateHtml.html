@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN"><head> 
+<title>在线代码着色高亮</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta http-equiv="Content-Language" content="zh-CN"> 
+<link id="css" rel="stylesheet" type="text/css" href="css/shCoreDjango.css">
+<script type="text/javascript" src="css/jquery-1.js"></script>
+<script type="text/javascript" src="css/shCore.js"></script>
+<script type="text/javascript" src="css/shBrushAll.js"></script>
+<script>
+var REGX_HTML_ENCODE = /"|&|'|<|>|[\x00-\x20]|[\x7F-\xFF]|[\u0100-\u2700]/g;
+//编码（txt:android中传过来的参数）
+function render(txt){
+	$("#result_div").empty();
+	$("#result_div").prepend("<pre>"+txt+"</pre>");
+	var class_v="brush :"+"java"+";";
+	class_v=class_v+"gutter: true;";//显示行号（true） 不显示行号（false）
+	$("#result_div pre").addClass(class_v);
+	SyntaxHighlighter.highlight();
+	toHTML();
+}
+//生成html
+function toHTML(){
+	var html="<link rel='stylesheet' type='text/css' href='http://www.osctools.net";
+	html=html+$("#css").attr("href");
+	html=html+"'/>";
+	html=html+$(".syntaxhighlighter").parent().html();
+	showMsgInAndroid(html)
+}
+//回调到android中（txt:回抛到android中的参数）
+function showMsgInAndroid(txt){
+      myjs.showMsg(txt);
+} 
+</script>
+</head>
+<body>
+<div id="result_div"></div>
+</body></html>

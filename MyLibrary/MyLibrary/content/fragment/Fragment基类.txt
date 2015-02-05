@@ -1,0 +1,16 @@
+/**
+ ***************************************************** 
+ * Fragment基类
+ ***************************************************** 
+ */
+public class BaseFragment extends Fragment {
+	public static FragmentManager fragmentManager;
+	public static Context context;
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		context = this.getActivity();
+		fragmentManager = this.getFragmentManager();
+	}
+}

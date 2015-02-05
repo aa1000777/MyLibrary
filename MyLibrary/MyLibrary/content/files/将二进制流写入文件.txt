@@ -1,0 +1,42 @@
+/**
+ ***************************************************** 
+ * @方法简介： 将二进制流写入文件
+ * @参数列表： @param in
+ * @参数列表： @param path
+ * @参数列表： @param fileName
+ * @返回值： boolean
+ ***************************************************** 
+ */
+public static boolean saveToFile(InputStream in,
+		String path, String fileName) {
+	FileOutputStream out = null;
+	byte buffer[] = new byte[4 * 1024];
+	File file = new File(path, fileName);
+	try {
+		file.createNewFile();
+		out = new FileOutputStream(file);
+		while ((in.read(buffer)) != -1) {
+			out.write(buffer);
+		}
+		return true;
+	} catch (IOException e1) {
+		e1.printStackTrace();
+		return false;
+	} finally {
+		if (null != out) {
+			try {
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		if (null != in) {
+			try {
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}

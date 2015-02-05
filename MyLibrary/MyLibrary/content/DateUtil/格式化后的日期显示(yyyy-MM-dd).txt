@@ -1,0 +1,15 @@
+/**
+ ***************************************************** 
+ * @方法简介： 格式化日期显示格式
+ * @参数列表： @param sdate 原始日期格式
+ * @参数列表： @param format 格式化后日期格式("yyyy-MM-dd")
+ * @返回值： 格式化后的日期显示(yyyy-MM-dd)
+ ***************************************************** 
+ */
+public static String dateFormat(String sdate,
+		String format) {
+	SimpleDateFormat formatter = new SimpleDateFormat(format);
+	java.sql.Date date = java.sql.Date.valueOf(sdate);
+	String dateString = formatter.format(date);
+	return dateString;
+}

@@ -1,0 +1,13 @@
+/**
+ ***************************************************** 
+ * @方法简介： 求两个日期相差天数
+ * @参数列表： @param sd 起始日期，格式yyyy-MM-dd
+ * @参数列表： @param ed 终止日期，格式yyyy-MM-dd
+ * @返回值： long 两个日期相差天数
+ ***************************************************** 
+ */
+public static long getIntervalDays(String sd, String ed) {
+	return ((java.sql.Date.valueOf(ed)).getTime() - (java.sql.Date
+			.valueOf(sd)).getTime())
+			/ (3600 * 24 * 1000);
+}

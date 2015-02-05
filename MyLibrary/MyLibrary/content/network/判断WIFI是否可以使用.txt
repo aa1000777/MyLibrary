@@ -1,0 +1,17 @@
+/**
+  *****************************************************
+  * @方法简介：  判断WIFI是否可以使用
+  * @参数列表：  @param context
+  * @返回值：       boolean
+  *****************************************************
+ */
+public static boolean isWiFiActive(Context context) {
+    WifiManager mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+    WifiInfo wifiInfo = mWifiManager.getConnectionInfo();
+    int ipAddress = wifiInfo == null ? 0 : wifiInfo.getIpAddress();
+    if(mWifiManager.isWifiEnabled() && ipAddress != 0){
+    	return true;
+    }else{
+    	return false;
+    }
+}

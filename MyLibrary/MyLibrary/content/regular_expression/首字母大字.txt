@@ -1,0 +1,13 @@
+/**
+ ***************************************************** 
+ * @参数列表：  input
+ * @返回值： String
+ * @方法简介： 首字母大字
+ ***************************************************** 
+ */
+public static String firstCharUpper(String input) {
+	if (input == null){return null;}
+	String firstChar = input.substring(0, 1).toUpperCase(
+			Locale.getDefault());
+	return firstChar + input.subSequence(1, input.length());
+}

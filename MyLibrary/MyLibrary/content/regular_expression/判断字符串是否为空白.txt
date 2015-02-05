@@ -1,0 +1,13 @@
+/**
+ ***************************************************** 
+ * @方法简介： 判断字符串是否为空白
+ * @参数列表： @param s
+ * @返回值： boolean
+ ***************************************************** 
+ */
+public static boolean isBlank(String s) {
+	if (s == null) {
+		return true;
+	}
+	return Pattern.matches("\\s*", s);
+}

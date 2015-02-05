@@ -1,0 +1,22 @@
+/**
+ ***************************************************** 
+ * @方法简介： 起始年月yyyy-MM与终止月yyyy-MM之间跨度的月数
+ * @参数列表： @param beginMonth
+ * @参数列表： @param endMonth
+ * @返回值： int
+ ***************************************************** 
+ */
+public static int getInterval(String beginMonth,
+		String endMonth) {
+	int intBeginYear = Integer.parseInt(beginMonth
+			.substring(0, 4));
+	int intBeginMonth = Integer.parseInt(beginMonth
+			.substring(beginMonth.indexOf("-") + 1));
+	int intEndYear = Integer.parseInt(endMonth
+			.substring(0, 4));
+	int intEndMonth = Integer.parseInt(endMonth
+			.substring(endMonth.indexOf("-") + 1));
+
+	return ((intEndYear - intBeginYear) * 12)
+			+ (intEndMonth - intBeginMonth) + 1;
+}

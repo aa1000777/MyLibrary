@@ -1,0 +1,18 @@
+/**
+ * 保存一个输入流到指定路径中
+ * @param is 输入流
+ * @param path 路径
+ * @param closeInputStream 是否关闭输入流
+ * @throws IOException
+ */
+public static void saveInputStream(InputStream is, String path,
+		boolean closeInputStream) throws IOException {
+	FileOutputStream os = new FileOutputStream(createFile(path));
+	byte[] cache = new byte[10 * 1024];
+	for (int len = 0; (len = is.read(cache)) != -1;) {
+		os.write(cache, 0, len);
+	}
+	os.close();
+	if (closeInputStream)
+		is.close();
+}

@@ -1,0 +1,10 @@
+/**
+ * 修改Wifi状态
+ * @param context  上下文
+ * @param status true为开启Wifi，false为关闭Wifi
+ */
+public static void changeWIFIStatus(Context context,
+		boolean status) {
+	((WifiManager) context.getSystemService(Context.WIFI_SERVICE))
+			.setWifiEnabled(status);
+}

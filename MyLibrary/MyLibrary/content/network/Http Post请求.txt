@@ -1,0 +1,33 @@
+private static String result;
+public static String URL = "http://54.200.0.39/Test/test/";// 服务器地址
+/**
+ ***************************************************** 
+ * @方法简介： Http Post请求
+ * @参数列表： @param pageName
+ * @参数列表： @param params
+ * @返回值： String
+ ***************************************************** 
+ */
+public static String httpPostData(String pageName,
+		List<NameValuePair> params) {
+	HttpPost httpPost = new HttpPost(URL + pageName);
+	HttpResponse httpResponse = null;
+	DefaultHttpClient client = null;
+	try {
+		httpPost.setEntity(new UrlEncodedFormEntity(
+				params, HTTP.UTF_8));
+		client = new DefaultHttpClient();
+		httpResponse = client.execute(httpPost);
+		if (httpResponse.getStatusLine()
+				.getStatusCode() == 200) {
+			result = EntityUtils.toString(httpResponse
+					.getEntity());
+			return result;
+		}
+	} catch (UnsupportedEncodingException e) {
+		e.printStackTrace();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	return null;
+}

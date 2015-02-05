@@ -1,0 +1,10 @@
+/**
+ ***************************************************** 
+ * 方法简介: 隐藏软件输入法
+ * @param activity
+ ***************************************************** 
+ */
+public static void hideSoftInput(Activity activity) {
+	activity.getWindow().setSoftInputMode(
+		WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+}

@@ -1,0 +1,17 @@
+/**
+ ***************************************************** 
+ * @方法简介： 去除特殊字符或将所有中文标号替换为英文标号
+ * @参数列表：  input
+ * @返回值： String
+ ***************************************************** 
+ */
+public static String stringFilter(String input) {
+	if (input == null)
+		return null;
+	input = input.replaceAll("【", "[").replaceAll("】", "]")
+			.replaceAll("！", "!").replaceAll("：", ":");// 替换中文标号
+	String regEx = "[『』]"; // 清除掉特殊字符
+	Pattern p = Pattern.compile(regEx);
+	Matcher m = p.matcher(input);
+	return m.replaceAll("").trim();
+}

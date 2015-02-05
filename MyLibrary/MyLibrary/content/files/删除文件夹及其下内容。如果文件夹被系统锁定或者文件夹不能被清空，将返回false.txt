@@ -1,0 +1,42 @@
+/**
+ * 删除文件夹及其下内容。如果文件夹被系统锁定或者文件夹不能被清空，将返回false。
+ * @param directory 文件夹目录
+ * @return 文件夹删除成功则返回true，文件夹不存在则返回false。
+ * @throws IOException  如果文件夹不能被删除，则抛出异常。
+ */
+public static boolean deleteDirectoryWithOSNative(
+		String directory) throws IOException {
+	boolean result = false;
+	Process process = null;
+	Thread std = null;
+	try {
+		Runtime runTime = Runtime.getRuntime();
+		if (File.separatorChar == '\\') {
+			process = runTime
+					.exec("CMD /D /C \"RMDIR /Q /S "
+							+ directory.replace('/',
+									'\\') + "\"");
+		} else {
+			process = runTime.exec("rm -rf "
+					+ directory.replace('\\',
+							File.separatorChar));
+		}
+		std = stdOut(process);
+		while (std.isAlive()) {
+			try {
+				Thread.sleep(250);
+			} catch (Exception e) {
+			}
+		}
+		result = true;
+	} catch (Exception e) {
+		System.out.println("Error running delete script");
+	} finally {
+		if (null != process) {
+			process.destroy();
+			process = null;
+		}
+		std = null;
+	}
+	return result;
+}

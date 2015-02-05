@@ -1,0 +1,9 @@
+/**
+ ***************************************************** 
+ * 方法简介: 强制设置Activity的显示方向为横向。
+ * @param activity
+ ***************************************************** 
+ */
+public static void setScreenHorizontal(Activity activity) {
+	activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+}

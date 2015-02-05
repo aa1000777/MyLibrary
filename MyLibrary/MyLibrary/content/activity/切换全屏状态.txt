@@ -1,0 +1,23 @@
+/**
+ ***************************************************** 
+ * 方法简介: 切换全屏状态
+ * @param activity
+ * @param isFull  设置为true则全屏，否则非全屏
+ ***************************************************** 
+ */
+public static void toggleFullScreen(Activity activity,
+		boolean isFull) {
+	// 隐藏Activity的系统默认标题栏
+	activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
+	Window window = activity.getWindow();
+	WindowManager.LayoutParams params = window.getAttributes();
+	if (isFull) {
+		params.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+		window.setAttributes(params);
+		window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+	} else {
+		params.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		window.setAttributes(params);
+		window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+	}
+}

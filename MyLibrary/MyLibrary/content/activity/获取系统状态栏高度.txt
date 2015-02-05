@@ -1,0 +1,20 @@
+/**
+ * 
+ ***************************************************** 
+ * 方法简介: 获取系统状态栏高度
+ * @param activity
+ * @return 状态栏高度
+ ***************************************************** 
+ */
+public static int getStatusBarHeight(Activity activity) {
+	try {
+		Class< ? > clazz = Class.forName("com.android.internal.R$dimen");
+		Object object = clazz.newInstance();
+		Field field = clazz.getField("status_bar_height");
+		int dpHeight = Integer.parseInt(field.get(object).toString());
+		return activity.getResources().getDimensionPixelSize(dpHeight);
+	} catch (Exception e1) {
+		e1.printStackTrace();
+		return 0;
+	}
+}

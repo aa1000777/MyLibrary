@@ -1,0 +1,14 @@
+/**
+ ***************************************************** 
+ * @方法简介： 启动一个指定包名的应用的默认Activity
+ * @参数列表： @param activity Activity
+ * @参数列表： @param packageName 包名
+ ***************************************************** 
+ */
+public static void launch(Activity activity, String packageName) {
+	Intent intent = activity.getPackageManager().getLaunchIntentForPackage(
+			packageName);
+	if (null != intent) {
+		activity.startActivity(intent);
+	}
+}

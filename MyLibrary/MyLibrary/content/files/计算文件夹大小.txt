@@ -1,0 +1,21 @@
+/**
+ * 计算文件夹大小
+ * @param directory  文件夹对象
+ * @return 文件夹大小
+ * @throws IOException
+ */
+public static long getSize(File directory)
+		throws IOException {
+	File[] files = directory.listFiles();
+	long size = 0;
+	for (File f : files) {
+		if (f.isDirectory())
+			size += getSize(f);
+		else {
+			FileInputStream fis = new FileInputStream(f);
+			size += fis.available();
+			fis.close();
+		}
+	}
+	return size;
+}

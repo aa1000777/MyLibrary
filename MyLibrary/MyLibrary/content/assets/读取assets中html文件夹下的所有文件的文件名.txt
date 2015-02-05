@@ -1,0 +1,26 @@
+﻿/**
+ ***************************************************** 
+ * 方法简介: 读取assets中html文件夹下的所有文件的文件名
+ ***************************************************** 
+ */
+public List<String> deepFile(Context context) {
+	List<String> list = new ArrayList<String>();
+	try {
+		String path = "html";
+		Context ctxDealFile = context.createPackageContext("com.example.wechatsample",
+				Context.CONTEXT_IGNORE_SECURITY);
+		String[] str = ctxDealFile.getAssets().list(path);
+		for (String string : str) {
+			System.out.println("文件路径：" + string);
+			// 取得带后缀的文件名中的点的位置
+			int i = string.indexOf(".") != -1 ? string.indexOf(".") : string.length();
+			// 截取文件名并加入到List中
+			list.add(string.substring(0, i));
+		}
+	} catch (IOException e) {
+		e.printStackTrace();
+	} catch (NameNotFoundException e) {
+		e.printStackTrace();
+	}
+	return list;
+}

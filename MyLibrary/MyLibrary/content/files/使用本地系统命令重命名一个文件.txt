@@ -1,0 +1,35 @@
+/**
+ * 使用本地系统命令重命名一个文件。
+ * @param from 原文件
+ * @param to 目标文件
+ */
+public static void rename(String from, String to) {
+	Process process = null;
+	Thread std = null;
+	try {
+		Runtime runTime = Runtime.getRuntime();
+		if (File.separatorChar == '\\') {
+			process = runTime.exec("CMD /D /C \"REN "
+					+ from + ' ' + to + "\"");
+		} else {
+			process = runTime.exec("mv -f " + from
+					+ ' ' + to);
+		}
+		std = stdOut(process);
+		while (std.isAlive()) {
+			try {
+				Thread.sleep(250);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	} catch (Exception e) {
+		System.out.println("Error running delete script");
+	} finally {
+		if (null != process) {
+			process.destroy();
+			process = null;
+			std = null;
+		}
+	}
+}

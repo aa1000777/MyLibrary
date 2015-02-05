@@ -1,0 +1,15 @@
+/**
+ ***************************************************** 
+ * 方法简介: 关闭已经显示的输入法窗口。
+ * @param context
+ * @param focusingView  输入法所在焦点的View
+ ***************************************************** 
+ */
+public static void closeSoftInput(Context context,
+		View focusingView) {
+	InputMethodManager imm = (InputMethodManager) context
+			.getSystemService(Context.INPUT_METHOD_SERVICE);
+	imm.hideSoftInputFromWindow(
+			focusingView.getWindowToken(),
+			InputMethodManager.RESULT_UNCHANGED_SHOWN);
+}

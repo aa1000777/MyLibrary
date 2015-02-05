@@ -1,0 +1,40 @@
+private static String result;
+public static String URL = "http://54.200.0.39/Test/test/";// 服务器地址
+/**
+ ***************************************************** 
+ * @方法简介： Http Get请求
+ * @参数列表： @param pageName
+ * @返回值： String
+ ***************************************************** 
+ */
+public static String httpGetData(String pageName) {
+	pageName = pageName.replace("#", "%23");
+	pageName = pageName.replace(" ", "%20");
+	System.out.println("pageName：" + URL + pageName);
+	try {
+		HttpGet httpGet = new HttpGet(URL + pageName);
+		System.out.println(URL + pageName);
+		HttpResponse httpResponse = null;
+		DefaultHttpClient client = null;
+		client = new DefaultHttpClient();
+		client.getParams().setParameter(
+			CoreConnectionPNames.CONNECTION_TIMEOUT,10000);
+		client.getParams().setParameter(
+			CoreConnectionPNames.SO_TIMEOUT, 10000);
+		httpResponse = client.execute(httpGet);
+		if (httpResponse.getStatusLine()
+				.getStatusCode() == HttpStatus.SC_OK) {
+			result = EntityUtils.toString(httpResponse
+					.getEntity());
+			System.out.println("RESULT:  " + result);
+			return result;
+		}
+	} catch (ConnectTimeoutException e) {
+		// e.printStackTrace();
+		return null;
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}

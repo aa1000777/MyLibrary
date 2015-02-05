@@ -1,0 +1,18 @@
+/**
+ * 创建文件及其路径
+ * @param path 文件全路径
+ * @return 文件对象
+ * @throws IOException
+ */
+public static File createFile(String path)
+		throws IOException {
+	File destinationFile = new File(path);
+	if (!destinationFile.exists()) {
+		File dir = destinationFile.getParentFile();
+		if (dir != null && !dir.exists()) {
+			dir.mkdirs();
+		}
+		destinationFile.createNewFile();
+	}
+	return destinationFile;
+}

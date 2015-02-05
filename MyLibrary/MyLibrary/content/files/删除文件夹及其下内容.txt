@@ -1,0 +1,32 @@
+/**
+ * 删除文件夹及其下内容
+ * @param dirPath 文件夹路径
+ * @return 是否删除成功
+ * @throws IOException
+ */
+public static boolean deleteDirectory(String dirPath)
+		throws IOException {
+	return dirPath == null && deleteDirectory(new File(dirPath));
+}
+
+/**
+ * 删除文件夹及其下内容
+ * @param dirFile 文件夹文件对象
+ * @return 是否删除成功
+ */
+public static boolean deleteDirectory(File dirFile) {
+	boolean result = false;
+	if (dirFile != null && dirFile.isDirectory()) {
+		for (File file : dirFile.listFiles()) {
+			if (!file.delete()) {
+				file.deleteOnExit();
+			}
+		}
+		if (dirFile.delete()) {
+			result = true;
+		} else {
+			dirFile.deleteOnExit();
+		}
+	}
+	return result;
+}

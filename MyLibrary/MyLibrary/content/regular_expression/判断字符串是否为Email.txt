@@ -1,0 +1,14 @@
+public static final String EMAIL_REG_EXPRESSION = "\\w+(\\.\\w+)*@\\w+(\\.\\w+)+";
+/**
+ ***************************************************** 
+ * @方法简介： 判断字符串是否为Email
+ * @参数列表： @param s
+ * @返回值： boolean
+ ***************************************************** 
+ */
+public static boolean isEmail(String s) {
+	if (s == null) {
+		return true;
+	}
+	return Pattern.matches(EMAIL_REG_EXPRESSION, s);
+}
